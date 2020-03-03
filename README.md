@@ -4,14 +4,14 @@ Repository for IND4FIBRE project of the Universidade Federal da Bahia (UFBA) Lab
 # Planned tasks
 - [x] Sensors' datasheet acquisition
 - [x] Creation of GitHub repository for documents and code organization
-- Example code for sensor data acquisition on ESP32
+- [ ] Example code for sensor data acquisition on ESP32
     - [x] LM35
     - [x] IRA 20
     - [x] DHT11
     - [ ] HC-SR04
     - [ ] MLX90615
 - [x] ROS installation on Beaglebone
-- ESP32 ROS topic publishing of sensors' data via TCP/IP
+- [ ] ESP32 ROS topic publishing of sensors' data via TCP/IP
     - [x] ESP32 ROS topic publishing concept via serial port
     - [ ] ESP32 ROS topic publishing concept via TCP/IP
     - [ ] Integration of ROS topic publishing via TCP/IP with data acquired from sensors
