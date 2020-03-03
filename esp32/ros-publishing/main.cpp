@@ -10,8 +10,8 @@
 //////////////////////
 // WiFi Definitions //
 //////////////////////
-const char* ssid = "Net Uva";
-const char* password = "95281317";
+const char* ssid = "XXXXX";
+const char* password = "XXXXXX";
 
 IPAddress server(192, 168, 1, 25); // ip of your ROS server
 IPAddress ip_address;
