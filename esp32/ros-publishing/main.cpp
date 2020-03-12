@@ -1,7 +1,4 @@
-#include <Preferences.h>
 #include <WiFi.h>
-#include <Esp32WifiManager.h>
-//#include <ESP8266WiFi.h>
 #include <ros.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Int16.h>
@@ -10,10 +7,10 @@
 //////////////////////
 // WiFi Definitions //
 //////////////////////
-const char* ssid = "XXXXX";
-const char* password = "XXXXXX";
+const char* ssid = "Net Uva";
+const char* password = "95281317";
 
-IPAddress server(192, 168, 1, 25); // ip of your ROS server
+IPAddress server(192, 168, 0, 25); // ip of your ROS server
 IPAddress ip_address;
 int status = WL_IDLE_STATUS;
 
@@ -49,14 +46,17 @@ class WiFiHardware {
   }
 };
 
-int i;
+//int i;
+const char* i;
 
-std_msgs::String str_msg;
+void chatterCallback(const std_msgs::String& msg) {
+  //i = atoi(msg.data);
+  i = msg.data;
+  Serial.println(i);
+}
 
-ros::Publisher chatter("chatter", &str_msg);
+ros::Subscriber<std_msgs::String> sub("message", &chatterCallback);
 ros::NodeHandle_<WiFiHardware> nh;
-
-char hello[13] = "hello world!";
 
 void setupWiFi()
 {
@@ -77,13 +77,12 @@ void setup() {
   Serial.begin(9600);
   setupWiFi();
   delay(2000);
+  //Serial.print("Setup function");
   nh.initNode();
-  nh.advertise(chatter);
+  nh.subscribe(sub);
 }
 
 void loop() {
-  str_msg.data = hello;
-  chatter.publish( &str_msg );
   nh.spinOnce();
-  delay(200);
+  delay(500);
 }

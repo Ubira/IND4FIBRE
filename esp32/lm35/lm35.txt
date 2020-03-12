@@ -1,0 +1,2 @@
+http://www.esp32learning.com/code/esp32-and-lm35-temperature-sensor.php
+https://www.instructables.com/id/Interface-LM35-With-NodeMCU/
