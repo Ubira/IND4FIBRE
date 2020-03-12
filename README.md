@@ -8,12 +8,12 @@ Repository for IND4FIBRE project of the Universidade Federal da Bahia (UFBA) Lab
     - [x] LM35
     - [x] IRA 20
     - [x] DHT11
-    - [ ] HC-SR04
+    - [x] HC-SR04
     - [ ] MLX90615
 - [x] ROS installation on Beaglebone
 - [ ] ESP32 ROS topic publishing of sensors' data via TCP/IP
     - [x] ESP32 ROS topic publishing concept via serial port
-    - [ ] ESP32 ROS topic publishing concept via TCP/IP
+    - [x] ESP32 ROS topic publishing concept via TCP/IP
     - [ ] Integration of ROS topic publishing via TCP/IP with data acquired from sensors
 - [ ] Encapsulation of the sensors with EPS32 in plastic boxes
 - [ ] Physical installation of the sensors on UFBA LaR
