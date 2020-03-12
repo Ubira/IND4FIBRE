@@ -7,12 +7,16 @@
 //////////////////////
 // WiFi Definitions //
 //////////////////////
-const char* ssid = "*****";
-const char* password = "*****";
+const char* ssid = "******";
+const char* password = "*******";
 
 IPAddress server(192, 168, 0, 25); // ip of your ROS server
 IPAddress ip_address;
 int status = WL_IDLE_STATUS;
+
+int led = 2;
+int button = 0;
+bool state = true;
 
 WiFiClient client;
 
@@ -55,7 +59,9 @@ void chatterCallback(const std_msgs::String& msg) {
   Serial.println(i);
 }
 
+std_msgs::String str_msg;
 ros::Subscriber<std_msgs::String> sub("message", &chatterCallback);
+ros::Publisher chatter("esp32/button", &str_msg);
 ros::NodeHandle_<WiFiHardware> nh;
 
 void setupWiFi()
@@ -75,14 +81,26 @@ void setupWiFi()
 
 void setup() {
   Serial.begin(9600);
+  pinMode(led,OUTPUT);
+  pinMode(button,INPUT_PULLUP);
   setupWiFi();
   delay(2000);
   //Serial.print("Setup function");
   nh.initNode();
+  nh.advertise(chatter);
   nh.subscribe(sub);
 }
 
 void loop() {
+  if(digitalRead(button) == LOW){
+    str_msg.data = "on";
+    digitalWrite(led,HIGH);
+    chatter.publish(&str_msg);
+  } else{
+    str_msg.data = "off";
+    digitalWrite(led,LOW);
+    chatter.publish(&str_msg);
+  }
   nh.spinOnce();
-  delay(500);
+  delay(1000);
 }
