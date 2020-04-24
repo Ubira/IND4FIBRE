@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/ubira/IND4FIBRE/ur5-use-case/ur5_control_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubira/IND4FIBRE/ur5-use-case/ur5_control_ws/install -G Unix Makefiles
